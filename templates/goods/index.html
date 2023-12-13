@@ -2,12 +2,34 @@
 
 {% block content %}
     <h1>商城首页</h1>
+{#    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">#}
+{#        <ol class="carousel-indicators">#}
+{#            {% for good in goods %}#}
+{#                <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}"></li>#}
+{#            {% endfor %}#}
+{#        </ol>#}
+{#        <div class="carousel-inner">#}
+{#            {% for good in goods %}#}
+{#                <div class="carousel-item {% if forloop.first %}active{% endif %}">#}
+{#                    <img class="d-block w-100" src="{{ good.goods_image.url }}" alt="{{ good.goods_name }}">#}
+{#                </div>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">#}
+{#            <span class="carousel-control-prev-icon" aria-hidden="true"></span>#}
+{#            <span class="sr-only">Previous</span>#}
+{#        </a>#}
+{#        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">#}
+{#            <span class="carousel-control-next-icon" aria-hidden="true"></span>#}
+{#            <span class="sr-only">Next</span>#}
+{#        </a>#}
+{#    </div>#}
     <div class="row">
         {% for good in goods %}
             <div class="col-sm-4">
                 <div class="card">
                     <a href="{% url 'goods:detail' good.id %}">
-                        <img class="card-img-top" src="{{ good.goods_image.url|default:'{% static "no_image.png" %}' }}" alt="{{ good.goods_name }}">
+                        <img class="card-img-top" src="{{ good.goods_image.url }}" alt="{{ good.goods_name }}">
                     </a>
                     <div class="card-body">
                         <h5 class="card-title">{{ good.goods_name }}</h5>
@@ -15,7 +37,7 @@
                         <p class="card-text">价格：{{ good.goods_price }}</p>
                         {% if request.session.user_id %}
                             <a href="{% url 'shoppingCart:add' good.id 1 %}" class="btn btn-primary">添加到购物车</a>
-                            <a href="{# {% url 'order:buy_now' good.id %} #}" class="btn btn-success">立即购买</a>
+                            <a href="{% url 'order:buy_now' good.id  %}" class="btn btn-success">立即购买</a>
                         {% else %}
                             <a href="{% url 'user:login' %}" class="btn btn-primary" onclick="alert('请先登录！')">添加到购物车</a>
                             <a href="{% url 'user:login' %}" class="btn btn-success" onclick="alert('请先登录！')">立即购买</a>

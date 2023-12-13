@@ -1,6 +1,8 @@
 from django.http import JsonResponse ,HttpResponse
 from django.shortcuts import render ,redirect ,reverse
 from django.contrib.auth import authenticate ,login ,logout
+
+from goods.models import TypeInfo
 from .models import UserInfo
 
 from django.shortcuts import render ,redirect
@@ -8,6 +10,7 @@ from user.forms import RegisterForm
 
 
 def register( request ):
+    categories = TypeInfo.objects.all()
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
@@ -15,7 +18,7 @@ def register( request ):
             return redirect('user:login')
     else:
         form = RegisterForm()
-    return render(request ,'user/register.html' ,{'form': form})
+    return render(request ,'user/register.html' ,{'form': form,'categories': categories})
 
 
 def register_handle( request ):
@@ -38,6 +41,7 @@ from .models import UserInfo
 
 
 def user_login( request ):
+    categories = TypeInfo.objects.all()
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -55,7 +59,7 @@ def user_login( request ):
         else:
             return render(request ,'user/login.html' ,{'error': '密码错误'})
     else:
-        return render(request ,'user/login.html')
+        return render(request ,'user/login.html',{'categories': categories})
 
 
 # def user_login( request ):

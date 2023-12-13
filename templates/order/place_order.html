@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h2 class="text-center my-4">订单页面</h2>
+        <form method="post" action="{% url 'order:order_handle' %}" onsubmit="return showPaymentAlert()">
+            {% csrf_token %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">商品ID</th>
+                        <th scope="col">商品名称</th>
+                        <th scope="col">数量</th>
+                        <th scope="col">价格</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 在这里动态生成表格行来显示所有购买的物品 -->
+                    {% for order in orders %}
+                        <tr>
+                            <td>{{ order.id }}</td>
+                            <td>{{ order.goods.goods_name }}</td>
+                            <td>{{ order.count }}</td>
+                            <td>{{ order.goods.goods_price }}</td>
+                            <td>{{ order.goods.merchant }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="text-center my-4">
+                <p>收货人：{{ orders.first.user.user_name }}</p>
+                <p>收货地址：{{ orders.first.user.user_addr }}</p>
+            </div>
+            <!-- 添加支付按钮 -->
+            <div class="text-center my-4">
+                <button type="submit" class="btn btn-primary">支付</button>
+            </div>
+        </form>
+    </div>
+    <script>
+    function showPaymentAlert() {
+        alert("支付已完成");
+        return true;
+    }
+    </script>
+{% endblock %}

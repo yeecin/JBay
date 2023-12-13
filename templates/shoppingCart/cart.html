@@ -1,3 +1,4 @@
+<!-- order.html -->
 {% extends "base.html" %}
 
 {% block content %}
@@ -11,13 +12,15 @@
           <th scope="col">操作</th>
         </tr>
       </thead>
-      <tbody>
+    <form id="orderForm" method="Post" action="{% url 'order:order' %}">
+        {% csrf_token %}
+        <tbody>
         {% for item in ShoppingCartInfo %}
           <tr>
             <td>{{ item.goods.goods_name }}</td>
             <td>
                 <div class="input-group mb-3">
-                    <input id="count{{ item.id }}" type="number" value="{{ item.count }}" min="1" class="form-control">
+                    <input id="goods_{{ item.id }}" type="number" value="{{ item.count }}" min="1" class="form-control">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="button" onclick="location.href='{% url 'shoppingCart:add' item.goods_id 1 %}'">增加</button>
                         <button class="btn btn-outline-secondary" type="button" onclick="if(document.getElementById('count{{ item.id }}').value > 1) location.href='{% url 'shoppingCart:sub' item.goods_id 1 %}'">减少</button>
@@ -36,10 +39,11 @@
         <tr>
             <td colspan="3" class="text-center">
                 <button class="btn btn-danger" onclick="location.href='{% url 'shoppingCart:clear' %}'">清除购物车</button>
-                <button class="btn btn-success" onclick="{#location.href='{% url 'order:order' %}'#}">全部购买</button>
+                <button class="btn btn-success" onclick="document.getElementById('orderForm').submit();">全部购买</button>
             </td>
         </tr>
       </tbody>
+    </form>
     </table>
   </div>
 {% endblock %}

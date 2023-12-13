@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" serverName="root@8.219.169.166:22 password (4)" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
       <paths name="root@8.219.169.166:22 password">
         <serverdata>
@@ -13,6 +13,20 @@
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@8.219.169.166:22 password (3)">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@8.219.169.166:22 password (4)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/JBay" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>

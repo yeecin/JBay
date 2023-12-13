@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h2 class="text-center my-4">商品列表</h2>
+        <div class="row">
+          {% for good in goods %}
+            <div class="col-md-4 mb-4">
+              <div class="card h-100 shadow-sm">
+                <img class="card-img-top" src="{{ good.goods_image.url }}" alt="{{ good.goods_name }}">
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">{{ good.goods_name }}</h5>
+                  <p class="card-text">价格: {{ good.goods_price }}</p>
+                  <a href="{% url 'goods:detail' good.id %}" class="btn btn-primary mt-auto">查看详情</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
