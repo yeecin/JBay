@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h2>商品类型</h2>
+        <ul class="list-group">
+          {% for type in categories %}
+            <li class="list-group-item"><a href="{% url 'goods:list' type.id%}">{{ type.type_name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="col-md-9">
+        <h2>商品列表</h2>
+        <div class="row">
+          {% for good in goods %}
+            <div class="col-md-4">
+              <div class="card">
+                <img class="card-img-top" src="{{ good.goods_image.url }}" alt="{{ good.goods_name }}">
+                <div class="card-body">
+                  <h5 class="card-title">{{ good.goods_name }}</h5>
+                  <p class="card-text">价格: {{ good.goods_price }}</p>
+                  <a href="{% url 'goods:detail' good.id %}" class="btn btn-primary">查看详情</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

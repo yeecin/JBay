@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}JBay{% endblock title %}</title>
+{#    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">#}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">JBAY</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'goods:index' %}">首页</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">分类</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {% for c in categories %}
+                                <a class="dropdown-item" href="{% url 'goods:goods_list' c.id %}">{{ c.type_name }}</a>
+                        {% endfor %}
+                    </div>
+
+                </li>
+                <li class="nav-item">
+                    {% if request.session.user_id %}
+                        <a class="nav-link" href="{% url 'shoppingCart:cart' %}">查看购物车</a>
+                        {% else %}
+                        <a class="nav-link" onclick="alert('请先登录')" href="{% url 'user:login' %}">查看购物车</a>
+                    {% endif %}
+                </li>
+                <li class="nav-item">
+                    {% if request.session.user_id %}
+                        <a class="nav-link" href="{% url 'user:logout' %}">退出登录 (当前用户ID: {{ request.session.username }})</a>
+                    {% else %}
+                        <a class="nav-link" href="{% url 'user:login' %}">登录/注册</a>
+                    {% endif %}
+                </li>
+            </ul>
+            <form class="form-inline ml-auto">
+                <input class="form-control mr-sm-2" type="search" placeholder="搜索" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+            </form>
+        </div>
+    </nav>
+    <div id="content">
+        {% block content %}
+        {% endblock content %}
+    </div>
+</body>
+{#<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>#}
+{#<script src="{% static 'js/bootstrap.min.js' %}"></script>#}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+{#<script src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script>#}
+{#<script src="https://cdn.staticfile.org/popper.js/1.16.0/umd/popper.min.js"></script>#}
+</html>

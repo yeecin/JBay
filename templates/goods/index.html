@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>商城首页</h1>
+    <div class="row">
+        {% for good in goods %}
+            <div class="col-sm-4">
+                <div class="card">
+                    <a href="{% url 'goods:detail' good.id %}">
+                        <img class="card-img-top" src="{{ good.goods_image.url|default:'{% static "no_image.png" %}' }}" alt="{{ good.goods_name }}">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ good.goods_name }}</h5>
+                        <p class="card-text">{{ good.goods_description }}</p>
+                        <p class="card-text">价格：{{ good.goods_price }}</p>
+                        {% if request.session.user_id %}
+                            <a href="{% url 'shoppingCart:add' good.id 1 %}" class="btn btn-primary">添加到购物车</a>
+                            <a href="{# {% url 'order:buy_now' good.id %} #}" class="btn btn-success">立即购买</a>
+                        {% else %}
+                            <a href="{% url 'user:login' %}" class="btn btn-primary" onclick="alert('请先登录！')">添加到购物车</a>
+                            <a href="{% url 'user:login' %}" class="btn btn-success" onclick="alert('请先登录！')">立即购买</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

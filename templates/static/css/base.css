@@ -1,0 +1,188 @@
+@import url(//fonts.googleapis.com/css?family=Ubuntu);
+
+/* 设置导航栏的背景色和字体颜色 */
+        .navbar {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* 设置导航栏的链接的颜色和鼠标悬停效果 */
+        .navbar a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            color: #f0f0f0;
+        }
+
+        /* 设置导航栏的品牌logo的大小 */
+        .navbar-brand img {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* 设置导航栏的搜索框的样式 */
+        .navbar input[type="search"] {
+            width: 300px;
+            border-radius: 20px;
+            padding-left: 15px;
+        }
+
+        /* 设置导航栏的购物车图标的样式 */
+        .navbar .fa-shopping-cart {
+            font-size: 24px;
+            margin-left: 10px;
+        }
+
+        /* 设置导航栏的用户图标的样式 */
+        .navbar .fa-user {
+            font-size: 24px;
+            margin-left: 10px;
+        }
+
+        /* 设置轮播图的高度 */
+        .carousel {
+            height: 500px;
+        }
+
+        .carousel-wrapper {
+            width: 500px; /* 根据需求调整宽度 */
+            margin: 0 auto; /* 设置水平居中 */
+        }
+
+        .carousel-inner img {
+            width: 100%;  /* 设置宽度为 100% */
+            height: 200px;  /* 设置高度为 500px */
+            object-fit: cover;  /* 图片将被缩放以适应其内容框，同时保持其长宽比，所以可能会被裁剪 */
+        }
+
+        /* 设置轮播图的图片的大小和居中显示 */
+        .carousel img {
+            width: 500px;
+            height: 500px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* 设置商品展示栏的标题的样式 */
+        .product-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        /* 设置商品展示栏的卡片的样式 */
+        .product-card {
+            width: 250px;
+            height: 450px;
+            margin: 10px;
+        }
+
+
+        /* 设置商品展示栏的卡片的图片的大小 */
+        .product-card img {
+            width: 100%;
+            height: 300px;
+        }
+
+        /* 设置商品展示栏的卡片的标题的样式 */
+        .product-card .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        /* 设置商品展示栏的卡片的价格的样式 */
+        .product-card .card-text {
+            font-size: 16px;
+            color: red;
+            margin: 10px 0;
+        }
+
+        /* 设置商品展示栏的卡片的按钮的样式 */
+        .product-card .btn {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* 设置商品展示栏的卡片的按钮的鼠标悬停效果 */
+        .product-card .btn:hover {
+            background-color: #0069d9;
+        }
+
+        /* 设置页脚的背景色和字体颜色 */
+        .footer {
+            background-color: #f0f0f0;
+            color: #6c757d;
+        }
+
+        /* 设置页脚的链接的颜色和鼠标悬停效果 */
+        .footer a {
+            color: #6c757d;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #343a40;
+        }
+
+        /* 设置页脚的版权信息的样式 */
+        .footer .copy-right {
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+        /* 设置登录和注册模态框的输入框的样式 */
+        .modal input[type="text"], .modal input[type="password"] {
+            width: 100%;
+            border-radius: 20px;
+            padding-left: 15px;
+        }
+
+        /* 设置登录和注册模态框的按钮的样式 */
+        .modal .btn {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* 设置登录和注册模态框的按钮的鼠标悬停效果 */
+        .modal .btn:hover {
+            background-color: #0069d9;
+        }
+
+        /* 设置查看购物车模态框的表格的样式 */
+        .modal table {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* 设置查看购物车模态框的总价的样式 */
+        .modal .total-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: red;
+            margin: 10px 0;
+        }
+
+        /* 设置查看购物车模态框的结算按钮的样式 */
+        .modal .checkout-btn {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+        }
+
+        /* 设置查看购物车模态框的结算按钮的鼠标悬停效果 */
+        .modal .checkout-btn:hover {
+            background-color: #218838;
+        }
+
+/*#header .logo {*/
+/*    font-family: 'Ubuntu', sans-serif;*/
+/*    float:left;*/
+/*    color:#333;*/
+/*    font-size:33px;*/
+/*    margin-right:10%;*/
+/*}*/
